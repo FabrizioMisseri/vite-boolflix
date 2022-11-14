@@ -14,7 +14,7 @@ export default {
 
 <template>
     <div>
-        <input type="text" placeholder="searchField" v-model="store.searchKey">
+        <input @keyup.enter="$emit('event')" type="text" placeholder="searchField" v-model="store.searchKey">
         <button @click="$emit('event')">search</button>
     </div>
 </template>
