@@ -25,6 +25,16 @@ export default {
 
             <li>Titolo Originale: {{ film.original_title }} </li>
 
+            <!-- GENRES -->
+            <li>
+                <span>Genere: </span>
+                <span v-for="(elementGenres, index) in store.arrayGenres"
+                    v-show="film.genre_ids.includes(elementGenres.id)">
+                    {{ elementGenres.name }},
+                </span>
+            </li>
+            <!-- / GENRES -->
+
             <!-- LINGUE -->
             <li class="language-flag-box">
                 <div v-if="film.original_language === 'it'">

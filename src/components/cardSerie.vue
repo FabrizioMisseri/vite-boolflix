@@ -25,6 +25,17 @@ export default {
 
             <li>Titolo Originale: {{ serie.original_name }} </li>
 
+            <!-- GENRES -->
+            <li>
+                <span>Genere: </span>
+                <span v-for="(elementGenres, index) in store.arrayGenres"
+                    v-show="serie.genre_ids.includes(elementGenres.id)">
+                    {{ elementGenres.name }},
+                </span>
+            </li>
+            <!-- / GENRES -->
+
+            <!-- FLAGS -->
             <li class="language-flag-box">
                 <div v-if="serie.original_language === 'it'">
                     <img src="../assets/img/italyLogo.png" alt="">
@@ -46,12 +57,15 @@ export default {
                     Lingua: {{ serie.original_language }}
                 </div>
             </li>
+            <!-- / FLAGS -->
 
+            <!-- POSTER -->
             <li>
                 <div>
                     <img :src="`${store.urlImg}${serie.backdrop_path}`" alt="">
                 </div>
             </li>
+            <!-- / POSTER -->
 
             <!-- STARS -->
             <li>

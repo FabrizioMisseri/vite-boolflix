@@ -47,18 +47,17 @@ export default {
       this.store.loader = false;
     },
 
-    selectCategory() {
+    buildArrayCategory() {
       axios
         .get(`${this.store.apiGenres}`)
         .then((categoryResp) => {
           this.store.arrayGenres = categoryResp.data.genres;
-          console.log(this.store.arrayGenres);
         });
     },
   },
 
   created() {
-    this.selectCategory();
+    this.buildArrayCategory();
   },
 
 }
