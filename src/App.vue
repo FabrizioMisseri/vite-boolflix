@@ -4,6 +4,7 @@ import axios from "axios";
 import appSearch from './components/appSearch.vue';
 import appMain from './components/appMain.vue';
 import loadingApp from './components/loadingApp.vue';
+import appCategorySelector from './components/appCategorySelector.vue';
 
 export default {
   name: "app vue",
@@ -12,6 +13,7 @@ export default {
     appSearch,
     appMain,
     loadingApp,
+    appCategorySelector,
   },
 
   data() {
@@ -44,6 +46,19 @@ export default {
         });
       this.store.loader = false;
     },
+
+    selectCategory() {
+      axios
+        .get(`${this.store.apiGenres}`)
+        .then((categoryResp) => {
+          this.store.arrayGenres = categoryResp.data.genres;
+          console.log(this.store.arrayGenres);
+        });
+    },
+  },
+
+  created() {
+    this.selectCategory();
   },
 
 }
@@ -51,6 +66,7 @@ export default {
 
 <template>
   <appSearch @event="findResearch" />
+  <appCategorySelector />
   <loadingApp v-if="store.loader" />
   <appMain v-else />
 </template>

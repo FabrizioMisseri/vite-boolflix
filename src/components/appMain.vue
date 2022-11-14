@@ -21,9 +21,11 @@ export default {
 
 <template>
     <h2>FILMs</h2>
-    <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie" />
+    <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie"
+        v-show="movie.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
     <h2>SERIEs TV</h2>
-    <cardSerie v-for="(elementSeries, index) in store.arraySeries" :key="index" :serie="elementSeries" />
+    <cardSerie v-for="(elementSeries, index) in store.arraySeries" :key="index" :serie="elementSeries"
+        v-show="elementSeries.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
 
 </template>
 
