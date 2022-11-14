@@ -1,4 +1,5 @@
 <script>
+import { store } from '../store';
 import cardFilm from './cardFilm.vue';
 
 export default {
@@ -6,21 +7,20 @@ export default {
 
     components: {
         cardFilm,
+    },
+
+    data() {
+        return {
+            store,
+        }
     }
 }
 </script>
 
 <template>
-    <ul>
-        <li>film</li>
-        <li>film</li>
-        <li>film</li>
-        <li>film</li>
-        <li>film</li>
-        <li>
-            <cardFilm />
-        </li>
-    </ul>
+
+    <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie" />
+
 </template>
 
 

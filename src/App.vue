@@ -23,7 +23,7 @@ export default {
       axios
         .get(`${this.store.apiMovies}${this.store.apiKey}${this.store.searchKey}`)
         .then((resp => {
-          console.log(resp);
+          this.store.arrayMovies = resp.data.results;
         }));
     },
   },
