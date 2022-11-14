@@ -20,20 +20,23 @@ export default {
 
     <div>
         <ul>
-            <li> titolo: {{ serie.name }} </li>
+            <hr>
+            <li> titolo: <strong> {{ serie.name }} </strong> </li>
+            <hr>
             <li>Titolo Originale: {{ serie.original_name }} </li>
+            <hr>
             <li>
                 <div v-if="serie.original_language === 'it'">
-                    bandiera italia
+                    BANDIERA ITALIA
                 </div>
                 <div v-if="serie.original_language === 'en'">
-                    bandiera inglese
+                    BANDIERA INGHILTERRA
                 </div>
                 <div v-if="serie.original_language === 'de'">
-                    bandiera germania
+                    BANDIERA GERMANIA
                 </div>
                 <div v-if="serie.original_language === 'ja'">
-                    bandiera giapponese
+                    BANDIERA GIAPPONE
                 </div>
                 <div v-if="serie.original_language !== 'it' &&
                     serie.original_language !== 'en' &&
@@ -43,14 +46,27 @@ export default {
                     Lingua: {{ serie.original_language }}
                 </div>
             </li>
-
+            <hr>
             <li>
-                <div>
-                    <img :src="`${store.urlImg}${serie.backdrop_path}`" alt="">
+                <div v-if="Math.floor(film.vote_average / 2) === 1">
+                    voto: 1 STELLA
+                </div>
+                <div v-if="Math.floor(film.vote_average / 2) === 2">
+                    voto: 2 STELLE
+                </div>
+                <div v-if="Math.floor(film.vote_average / 2) === 3">
+                    voto: 3 STELLE
+                </div>
+                <div v-if="Math.floor(film.vote_average / 2) === 4">
+                    voto: 4 STELLE
+                </div>
+                <div v-if="Math.floor(film.vote_average / 2) === 5">
+                    voto: 5 STELLE
                 </div>
             </li>
-
+            <hr>
             <li>Voto: {{ Math.floor(serie.vote_average / 2) }} </li>
+            <hr>
         </ul>
 
     </div>
