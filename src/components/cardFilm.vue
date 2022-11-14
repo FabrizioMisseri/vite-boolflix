@@ -15,7 +15,7 @@ export default {
             <li> titolo: {{ film.title }} </li>
             <li>Titolo Originale: {{ film.original_title }} </li>
             <li>Lingua: {{ film.original_language }} </li>
-            <li>Voto: {{ film.vote_average }} </li>
+            <li>Voto: {{ Math.floor(film.vote_average / 2) }} </li>
         </ul>
 
     </div>
