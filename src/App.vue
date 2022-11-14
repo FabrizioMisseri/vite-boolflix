@@ -3,6 +3,7 @@ import { store } from './store';
 import axios from "axios";
 import appSearch from './components/appSearch.vue';
 import appMain from './components/appMain.vue';
+import loadingApp from './components/loadingApp.vue';
 
 export default {
   name: "app vue",
@@ -10,6 +11,7 @@ export default {
   components: {
     appSearch,
     appMain,
+    loadingApp,
   },
 
   data() {
@@ -20,10 +22,16 @@ export default {
 
   methods: {
     findResearch() {
-      this.axiosCall();
+      if (this.store.searchKey !== "") {
+        this.axiosCall();
+      } else {
+        this.store.arrayMovies = [];
+        this.store.arraySeries = [];
+      }
     },
 
     axiosCall() {
+      this.store.loader = true;
       axios
         .get(`${this.store.apiMovies}${this.store.apiKey}${this.store.searchKey}`)
         .then((movieResp) => {
@@ -34,6 +42,7 @@ export default {
         .then((serieResp) => {
           this.store.arraySeries = serieResp.data.results;
         });
+      this.store.loader = false;
     },
   },
 
@@ -42,7 +51,8 @@ export default {
 
 <template>
   <appSearch @event="findResearch" />
-  <appMain />
+  <loadingApp v-if="store.loader" />
+  <appMain v-else />
 </template>
 
 
