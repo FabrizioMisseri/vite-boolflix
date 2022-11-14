@@ -57,5 +57,8 @@ export default {
 
 
 <style>
-
+/* debug */
+ul {
+  list-style: none;
+}
 </style>

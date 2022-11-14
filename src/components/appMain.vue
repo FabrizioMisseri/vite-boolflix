@@ -15,7 +15,7 @@ export default {
         return {
             store,
         }
-    }
+    },
 }
 </script>
 
@@ -27,7 +27,12 @@ export default {
 
 </template>
 
-
 <style>
+.language-flag-box img {
+    max-width: 30px;
+}
 
+.stars {
+    color: orange;
+}
 </style>

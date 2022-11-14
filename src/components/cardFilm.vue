@@ -22,21 +22,22 @@ export default {
         <ul>
             <hr>
             <li> titolo: <strong>{{ film.title }}</strong> </li>
-            <hr>
+
             <li>Titolo Originale: {{ film.original_title }} </li>
-            <hr>
-            <li>
+
+            <!-- LINGUE -->
+            <li class="language-flag-box">
                 <div v-if="film.original_language === 'it'">
-                    BANDIERA ITALIA
+                    <img src="../assets/img/italyLogo.png" alt="">
                 </div>
                 <div v-if="film.original_language === 'en'">
-                    BANDIERA INGHILTERRA
+                    <img src="../assets/img/englandLogo.png" alt="">
                 </div>
                 <div v-if="film.original_language === 'de'">
-                    BANDIERA GERMANIA
+                    <img src="../assets/img/deutschLogo.png" alt="">
                 </div>
                 <div v-if="film.original_language === 'ja'">
-                    BANDIERA GIAPPONE
+                    <img src="../assets/img/japLogo.jpg" alt="">
                 </div>
                 <div v-if="film.original_language !== 'it' &&
                     film.original_language !== 'en' &&
@@ -46,30 +47,65 @@ export default {
                     Lingua: {{ film.original_language }}
                 </div>
             </li>
-            <hr>
+            <!-- / LINGUE -->
+
+            <!-- POSTER -->
             <li>
                 <div>
                     <img :src="`${store.urlImg}${film.backdrop_path}`" alt="">
                 </div>
             </li>
-            <hr>
+            <!-- / POSTER -->
+
+            <!-- STARS -->
             <li>
                 <div v-if="Math.floor(film.vote_average / 2) === 1">
-                    voto: 1 STELLA
+                    voto:
+                    <span class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                    </span>
                 </div>
                 <div v-if="Math.floor(film.vote_average / 2) === 2">
-                    voto: 2 STELLE
+                    voto:
+                    <span class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
                 </div>
                 <div v-if="Math.floor(film.vote_average / 2) === 3">
-                    voto: 3 STELLE
+                    voto:
+                    <span class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
                 </div>
                 <div v-if="Math.floor(film.vote_average / 2) === 4">
-                    voto: 4 STELLE
+                    voto:
+                    <span class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
                 </div>
                 <div v-if="Math.floor(film.vote_average / 2) === 5">
-                    voto: 5 STELLE
+                    voto:
+                    <span class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
                 </div>
             </li>
+            <!-- / STARS -->
             <hr>
         </ul>
 
