@@ -1,9 +1,17 @@
 <script>
+import { store } from '../store';
+
 export default {
     name: "card serie",
 
     props: {
         serie: Object,
+    },
+
+    data() {
+        return {
+            store,
+        }
     },
 }
 </script>
@@ -35,6 +43,13 @@ export default {
                     Lingua: {{ serie.original_language }}
                 </div>
             </li>
+
+            <li>
+                <div>
+                    <img :src="`${store.urlImg}${serie.backdrop_path}`" alt="">
+                </div>
+            </li>
+
             <li>Voto: {{ Math.floor(serie.vote_average / 2) }} </li>
         </ul>
 

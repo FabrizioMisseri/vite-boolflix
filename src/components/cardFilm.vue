@@ -1,4 +1,6 @@
 <script>
+import { store } from '../store';
+
 export default {
     name: "card film",
 
@@ -6,6 +8,11 @@ export default {
         film: Object,
     },
 
+    data() {
+        return {
+            store,
+        }
+    },
 }
 </script>
 
@@ -35,6 +42,12 @@ export default {
                     film.original_language !== 'ja'
                 ">
                     Lingua: {{ film.original_language }}
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <img :src="`${store.urlImg}${film.backdrop_path}`" alt="">
                 </div>
             </li>
 
