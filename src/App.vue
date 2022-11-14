@@ -19,6 +19,10 @@ export default {
   },
 
   methods: {
+    findResearch() {
+      this.axiosCall();
+    },
+
     axiosCall() {
       axios
         .get(`${this.store.apiMovies}${this.store.apiKey}${this.store.searchKey}`)
@@ -28,16 +32,11 @@ export default {
     },
   },
 
-  // inizio debug
-  created() {
-    this.axiosCall();
-  }
-  // fine debug
 }
 </script>
 
 <template>
-  <appSearch />
+  <appSearch @event="findResearch" />
   <appMain />
 </template>
 
