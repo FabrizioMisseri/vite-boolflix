@@ -26,9 +26,14 @@ export default {
     axiosCall() {
       axios
         .get(`${this.store.apiMovies}${this.store.apiKey}${this.store.searchKey}`)
-        .then((resp => {
-          this.store.arrayMovies = resp.data.results;
-        }));
+        .then((movieResp) => {
+          this.store.arrayMovies = movieResp.data.results;
+        });
+      axios
+        .get(`${this.store.apiSeries}${this.store.apiKey}${this.store.searchKey}`)
+        .then((serieResp) => {
+          this.store.arraySeries = serieResp.data.results;
+        });
     },
   },
 
