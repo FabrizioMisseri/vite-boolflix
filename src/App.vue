@@ -1,5 +1,6 @@
 <script>
 import { store } from './store';
+import axios from "axios";
 import appSearch from './components/appSearch.vue';
 import appMain from './components/appMain.vue';
 
@@ -16,6 +17,22 @@ export default {
       store,
     }
   },
+
+  methods: {
+    axiosCall() {
+      axios
+        .get(`${this.store.apiMovies}${this.store.apiKey}${this.store.searchKey}`)
+        .then((resp => {
+          console.log(resp);
+        }));
+    },
+  },
+
+  // inizio debug
+  created() {
+    this.axiosCall();
+  }
+  // fine debug
 }
 </script>
 
