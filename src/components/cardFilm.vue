@@ -101,6 +101,8 @@ export default {
         position: absolute;
         left: 0;
         top: 0;
+        overflow-y: auto;
+        height: 100%;
 
         .language-flag-box img {
             max-width: 30px;
