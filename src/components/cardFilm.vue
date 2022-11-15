@@ -11,6 +11,13 @@ export default {
     data() {
         return {
             store,
+            availableFlags: ['en', 'it', 'de'],
+        }
+    },
+
+    methods: {
+        getImgUrl(imgName) {
+            return new URL(`../assets/img/${imgName}.png`, import.meta.url).href;
         }
     },
 }
@@ -21,9 +28,9 @@ export default {
     <div>
         <ul>
             <hr>
-            <li> titolo: <strong>{{ film.title }}</strong> </li>
+            <li> titolo: <strong>{{ film.title ? film.title : film.name }}</strong> </li>
 
-            <li>Titolo Originale: {{ film.original_title }} </li>
+            <li>Titolo Originale: {{ film.original_title ? film.original_title : film.original_name }} </li>
 
             <!-- GENRES -->
             <li>
@@ -37,25 +44,8 @@ export default {
 
             <!-- LINGUE -->
             <li class="language-flag-box">
-                <div v-if="film.original_language === 'it'">
-                    <img src="../assets/img/italyLogo.png" alt="">
-                </div>
-                <div v-if="film.original_language === 'en'">
-                    <img src="../assets/img/englandLogo.png" alt="">
-                </div>
-                <div v-if="film.original_language === 'de'">
-                    <img src="../assets/img/deutschLogo.png" alt="">
-                </div>
-                <div v-if="film.original_language === 'ja'">
-                    <img src="../assets/img/japLogo.jpg" alt="">
-                </div>
-                <div v-if="film.original_language !== 'it' &&
-                    film.original_language !== 'en' &&
-                    film.original_language !== 'de' &&
-                    film.original_language !== 'ja'
-                ">
-                    Lingua: {{ film.original_language }}
-                </div>
+                <img v-if="availableFlags.includes(film.original_language)" :src="getImgUrl(film.original_language)">
+                <p v-else>Lingua: {{ film.original_language }}</p>
             </li>
             <!-- / LINGUE -->
 

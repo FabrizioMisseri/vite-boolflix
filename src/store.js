@@ -13,5 +13,4 @@ export const store = reactive({
     arraySeries: [],
     arrayGenres: [],
     categorySelector: "",
-
 });

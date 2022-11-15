@@ -1,14 +1,12 @@
 <script>
 import { store } from '../store';
 import cardFilm from './cardFilm.vue';
-import cardSerie from './cardSerie.vue';
 
 export default {
     name: "app main",
 
     components: {
         cardFilm,
-        cardSerie,
     },
 
     data() {
@@ -24,7 +22,7 @@ export default {
     <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie"
         v-show="movie.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
     <h2>SERIEs TV</h2>
-    <cardSerie v-for="(elementSeries, index) in store.arraySeries" :key="index" :serie="elementSeries"
+    <cardFilm v-for="(elementSeries, index) in store.arraySeries" :key="index" :film="elementSeries"
         v-show="elementSeries.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
 
 </template>

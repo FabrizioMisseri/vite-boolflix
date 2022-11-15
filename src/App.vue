@@ -34,17 +34,25 @@ export default {
 
     axiosCall() {
       this.store.loader = true;
+      this.axiosCallMovies();
+      this.axiosCallSeries();
+      this.store.loader = false;
+    },
+
+    axiosCallMovies() {
       axios
         .get(`${this.store.apiMovies}${this.store.apiKey}${this.store.searchKey}`)
         .then((movieResp) => {
           this.store.arrayMovies = movieResp.data.results;
         });
+    },
+
+    axiosCallSeries() {
       axios
         .get(`${this.store.apiSeries}${this.store.apiKey}${this.store.searchKey}`)
         .then((serieResp) => {
           this.store.arraySeries = serieResp.data.results;
         });
-      this.store.loader = false;
     },
 
     buildArrayCategory() {
