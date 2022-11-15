@@ -25,48 +25,95 @@ export default {
 
 <template>
 
-    <div>
-        <ul>
-            <hr>
-            <li> titolo: <strong>{{ film.title ? film.title : film.name }}</strong> </li>
+    <!-- POSTER -->
+    <section class="poster">
+        <img :src="`${store.urlImg}${film.backdrop_path}`" alt="" class="poster-img">
 
-            <li>Titolo Originale: {{ film.original_title ? film.original_title : film.original_name }} </li>
+        <!-- CARD -->
+        <div class="card">
+            <ul>
+                <!-- TITLES -->
+                <li> titolo: <strong>{{ film.title ? film.title : film.name }}</strong> </li>
 
-            <!-- GENRES -->
-            <li>
-                <span>Genere: </span>
-                <span v-for="(elementGenres, index) in store.arrayGenres"
-                    v-show="film.genre_ids.includes(elementGenres.id)">
-                    {{ elementGenres.name }},
-                </span>
-            </li>
-            <!-- / GENRES -->
+                <li>Titolo Originale: {{ film.original_title ? film.original_title : film.original_name }} </li>
+                <!-- / TITLES -->
 
-            <!-- LINGUE -->
-            <li class="language-flag-box">
-                <img v-if="availableFlags.includes(film.original_language)" :src="getImgUrl(film.original_language)">
-                <p v-else>Lingua: {{ film.original_language }}</p>
-            </li>
-            <!-- / LINGUE -->
+                <!-- GENRES -->
+                <li>
+                    <span>Genere: </span>
+                    <span v-for="(elementGenres, index) in store.arrayGenres"
+                        v-show="film.genre_ids.includes(elementGenres.id)">
+                        {{ elementGenres.name }},
+                    </span>
+                </li>
+                <!-- / GENRES -->
 
-            <!-- POSTER -->
-            <li>
-                <div>
-                    <img :src="`${store.urlImg}${film.backdrop_path}`" alt="">
-                </div>
-            </li>
-            <!-- / POSTER -->
+                <!-- LINGUE -->
+                <li class="language-flag-box">
+                    <img v-if="availableFlags.includes(film.original_language)"
+                        :src="getImgUrl(film.original_language)">
+                    <span v-else>Lingua: {{ film.original_language }}</span>
+                </li>
+                <!-- / LINGUE -->
 
-            <!-- STARS -->
-            <li>
-                <span v-for="(star, index) in Math.floor(film.vote_average / 2)" class="stars">
-                    <i class="fa-solid fa-star"></i>
-                </span>
-            </li>
-            <!-- / STARS -->
-            <hr>
-        </ul>
+                <!-- STARS -->
+                <li>
+                    <span v-for="(star, index) in Math.floor(film.vote_average / 2)" class="stars">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                </li>
+                <!-- / STARS -->
+            </ul>
+        </div>
+        <!-- / CARD -->
 
-    </div>
+    </section>
+    <!-- / POSTER -->
+
 
 </template>
+
+<style lang="scss" scoped>
+.poster {
+    width: 344px;
+    min-height: 192px;
+    margin-top: 1rem;
+    border: 1px solid silver;
+    position: relative;
+
+    img {
+        display: block;
+    }
+
+    .card {
+        display: none;
+        padding: 1rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        .language-flag-box img {
+            max-width: 30px;
+        }
+
+        .stars {
+            color: orange;
+        }
+
+        li {
+            margin: .4rem 0;
+        }
+    }
+}
+
+.poster:hover {
+
+    .poster-img {
+        display: none;
+    }
+
+    .card {
+        display: block;
+    }
+}
+</style>

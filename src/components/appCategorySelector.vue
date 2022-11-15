@@ -20,3 +20,11 @@ export default {
         </option>
     </select>
 </template>
+
+<style lang="scss" scoped>
+select {
+    width: 25vw;
+    padding: .2rem;
+    font-size: 1.1rem;
+}
+</style>

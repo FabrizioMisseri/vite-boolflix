@@ -18,21 +18,37 @@ export default {
 </script>
 
 <template>
-    <h2>FILMs</h2>
-    <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie"
-        v-show="movie.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
-    <h2>SERIEs TV</h2>
-    <cardFilm v-for="(elementSeries, index) in store.arraySeries" :key="index" :film="elementSeries"
-        v-show="elementSeries.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
+    <!-- FILMS SECTION -->
+    <section class="box">
+        <h2 class="text-center">LISTA FILMS</h2>
+
+        <div class="d-flex justify-between">
+            <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie"
+                v-show="movie.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
+        </div>
+    </section>
+    <!-- / FILMS SECTION -->
+
+    <!-- SERIES SECTION -->
+    <section class="box">
+        <h2 class="text-center">SERIES TV</h2>
+
+        <div class="d-flex justify-between">
+            <cardFilm v-for="(elementSeries, index) in store.arraySeries" :key="index" :film="elementSeries"
+                v-show="elementSeries.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
+        </div>
+    </section>
+    <!-- / SERIES SECTION -->
 
 </template>
 
-<style>
-.language-flag-box img {
-    max-width: 30px;
-}
+<style lang="scss" scoped>
+.box {
+    padding: 1rem;
 
-.stars {
-    color: orange;
+    h2 {
+        font-size: 2rem;
+        margin-bottom: .7rem;
+    }
 }
 </style>

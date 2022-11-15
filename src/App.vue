@@ -72,16 +72,55 @@ export default {
 </script>
 
 <template>
-  <appSearch @event="findResearch" />
-  <appCategorySelector />
-  <loadingApp v-if="store.loader" />
-  <appMain v-else />
+  <section class="wrapper">
+
+    <header class="d-flex justify-between align-center">
+      <div class="container d-flex justify-between align-center">
+        <div>
+          <h1>BoolFlix</h1>
+        </div>
+
+        <div>
+          <appSearch @event="findResearch" />
+          <appCategorySelector />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container cards-container">
+        <loadingApp v-if="store.loader" />
+        <appMain v-else />
+      </div>
+    </main>
+
+  </section>
 </template>
 
 
-<style>
-/* debug */
-ul {
-  list-style: none;
+<style lang="scss">
+@use "./styles/general.scss" as *;
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+
+}
+
+header {
+  background-color: black;
+  height: 15vh;
+
+  h1 {
+    color: red;
+    font-size: 3rem;
+  }
+}
+
+main {
+  height: 85vh;
+  background-color: rgb(34, 34, 34);
+  color: white;
+  overflow-y: auto;
 }
 </style>
