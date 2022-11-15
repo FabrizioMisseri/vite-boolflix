@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import { store } from '../store';
 
 export default {
@@ -18,7 +19,7 @@ export default {
     methods: {
         getImgUrl(imgName) {
             return new URL(`../assets/img/${imgName}.png`, import.meta.url).href;
-        }
+        },
     },
 }
 </script>
@@ -37,6 +38,15 @@ export default {
 
                 <li>Titolo Originale: {{ film.original_title ? film.original_title : film.original_name }} </li>
                 <!-- / TITLES -->
+
+                <!-- CAST -->
+                <li>
+                    <span>Cast: </span>
+                    <span v-for="(actor, index) in film.cast" :key="index" v-show="index < 5">
+                        {{ actor.name }},
+                    </span>
+                </li>
+                <!-- / CAST -->
 
                 <!-- GENRES -->
                 <li>
@@ -76,7 +86,7 @@ export default {
 <style lang="scss" scoped>
 .poster {
     width: 344px;
-    min-height: 192px;
+    min-height: 194px;
     margin-top: 1rem;
     border: 1px solid silver;
     position: relative;

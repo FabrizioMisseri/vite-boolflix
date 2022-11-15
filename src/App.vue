@@ -52,6 +52,9 @@ export default {
         .get(`${this.store.apiSeries}${this.store.apiKey}${this.store.searchKey}`)
         .then((serieResp) => {
           this.store.arraySeries = serieResp.data.results;
+        })
+        .finally(() => {
+          this.callAxiosCast();
         });
     },
 
@@ -61,6 +64,16 @@ export default {
         .then((categoryResp) => {
           this.store.arrayGenres = categoryResp.data.genres;
         });
+    },
+
+    callAxiosCast() {
+      for (let i = 0; i < this.store.arraySeries.length; i++) {
+        axios
+          .get(`https://api.themoviedb.org/3/movie/${this.store.arraySeries[i].id}/credits?api_key=22660efa238b83d9e84c3f57fcc0043d`)
+          .then((resp) => {
+            this.store.arraySeries[i].cast = resp.data.cast;
+          });
+      }
     },
   },
 
