@@ -59,51 +59,9 @@ export default {
 
             <!-- STARS -->
             <li>
-                <div v-if="Math.floor(film.vote_average / 2) === 1">
-                    voto:
-                    <span class="stars">
-
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                </div>
-                <div v-if="Math.floor(film.vote_average / 2) === 2">
-                    voto:
-                    <span class="stars">
-
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                </div>
-                <div v-if="Math.floor(film.vote_average / 2) === 3">
-                    voto:
-                    <span class="stars">
-
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                </div>
-                <div v-if="Math.floor(film.vote_average / 2) === 4">
-                    voto:
-                    <span class="stars">
-
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                </div>
-                <div v-if="Math.floor(film.vote_average / 2) === 5">
-                    voto:
-                    <span class="stars">
-
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                </div>
+                <span v-for="(star, index) in Math.floor(film.vote_average / 2)" class="stars">
+                    <i class="fa-solid fa-star"></i>
+                </span>
             </li>
             <!-- / STARS -->
             <hr>
