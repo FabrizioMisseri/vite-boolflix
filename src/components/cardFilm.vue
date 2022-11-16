@@ -1,5 +1,4 @@
 <script>
-import axios from "axios";
 import { store } from '../store';
 
 export default {
@@ -68,8 +67,11 @@ export default {
 
                 <!-- STARS -->
                 <li>
-                    <span v-for="(star, index) in Math.floor(film.vote_average / 2)" class="stars">
+                    <span v-for="(star, index) in Math.round(film.vote_average / 2)" :key="index" class="stars">
                         <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span v-for="(star, index) in (5 - (Math.round(film.vote_average / 2)))" :key="index" class="stars">
+                        <i class="fa-regular fa-star"></i>
                     </span>
                 </li>
                 <!-- / STARS -->
@@ -97,7 +99,7 @@ export default {
 
     .card {
         display: none;
-        padding: 1rem;
+        padding: 0 1rem;
         position: absolute;
         left: 0;
         top: 0;
