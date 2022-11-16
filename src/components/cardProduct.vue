@@ -20,6 +20,12 @@ export default {
             return new URL(`../assets/img/${imgName}.png`, import.meta.url).href;
         },
     },
+
+    computed: {
+        X() {
+            return 5 - (Math.round(product.vote_average / 2));
+        }
+    }
 }
 </script>
 
@@ -71,8 +77,7 @@ export default {
                     <span v-for="(star, index) in Math.round(product.vote_average / 2)" :key="index" class="stars">
                         <i class="fa-solid fa-star"></i>
                     </span>
-                    <span v-for="(star, index) in (5 - (Math.round(product.vote_average / 2)))" :key="index"
-                        class="stars">
+                    <span v-for="(star, index) in X" :key="index" class="stars">
                         <i class="fa-regular fa-star"></i>
                     </span>
                 </li>
