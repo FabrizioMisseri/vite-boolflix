@@ -72,14 +72,14 @@ export default {
     callAxiosCast() {
       for (let i = 0; i < this.store.arraySeries.length; i++) {
         axios
-          .get(`https://api.themoviedb.org/3/movie/${this.store.arraySeries[i].id}/credits?api_key=22660efa238b83d9e84c3f57fcc0043d`)
+          .get(`${this.store.apiSeriesActors}${this.store.arraySeries[i].id}/credits${this.store.apiKey}`)
           .then((resp) => {
             this.store.arraySeries[i].cast = resp.data.cast;
           });
       };
       for (let i = 0; i < this.store.arrayMovies.length; i++) {
         axios
-          .get(`https://api.themoviedb.org/3/movie/${this.store.arrayMovies[i].id}/credits?api_key=22660efa238b83d9e84c3f57fcc0043d`)
+          .get(`${this.store.apiMoviesActors}${this.store.arrayMovies[i].id}/credits${this.store.apiKey}`)
           .then((resp) => {
             this.store.arrayMovies[i].cast = resp.data.cast;
           });

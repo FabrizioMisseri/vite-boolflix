@@ -1,12 +1,12 @@
 <script>
 import { store } from '../store';
-import cardFilm from './cardFilm.vue';
+import cardProduct from './cardProduct.vue';
 
 export default {
     name: "app main",
 
     components: {
-        cardFilm,
+        cardProduct,
     },
 
     data() {
@@ -23,7 +23,7 @@ export default {
         <h2 class="text-center">LISTA FILMS</h2>
 
         <div class="d-flex justify-between">
-            <cardFilm v-for="(movie, index) in store.arrayMovies" :key="index" :film="movie"
+            <cardProduct v-for="(movie, index) in store.arrayMovies" :key="index" :product="movie"
                 v-show="movie.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
         </div>
     </section>
@@ -34,7 +34,7 @@ export default {
         <h2 class="text-center">SERIES TV</h2>
 
         <div class="d-flex justify-between">
-            <cardFilm v-for="(elementSeries, index) in store.arraySeries" :key="index" :film="elementSeries"
+            <cardProduct v-for="(elementSeries, index) in store.arraySeries" :key="index" :product="elementSeries"
                 v-show="elementSeries.genre_ids.includes(store.categorySelector) || store.categorySelector === ''" />
         </div>
     </section>

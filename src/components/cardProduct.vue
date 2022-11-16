@@ -2,10 +2,10 @@
 import { store } from '../store';
 
 export default {
-    name: "card film",
+    name: "card product",
 
     props: {
-        film: Object,
+        product: Object,
     },
 
     data() {
@@ -27,21 +27,22 @@ export default {
 
     <!-- POSTER -->
     <section class="poster">
-        <img :src="`${store.urlImg}${film.backdrop_path}`" alt="" class="poster-img">
+        <img :src="`${store.urlImg}${product.backdrop_path}`" alt="" class="poster-img">
 
         <!-- CARD -->
         <div class="card">
             <ul>
                 <!-- TITLES -->
-                <li> titolo: <strong>{{ film.title ? film.title : film.name }}</strong> </li>
+                <li> titolo: <strong>{{ product.title ? product.title : product.name }}</strong> </li>
 
-                <li>Titolo Originale: {{ film.original_title ? film.original_title : film.original_name }} </li>
+                <li>Titolo Originale: {{ product.original_title ? product.original_title : product.original_name }}
+                </li>
                 <!-- / TITLES -->
 
                 <!-- CAST -->
                 <li>
                     <span>Cast: </span>
-                    <span v-for="(actor, index) in film.cast" :key="index" v-show="index < 5">
+                    <span v-for="(actor, index) in product.cast" :key="index" v-show="index < 5">
                         {{ actor.name }},
                     </span>
                 </li>
@@ -51,7 +52,7 @@ export default {
                 <li>
                     <span>Genere: </span>
                     <span v-for="(elementGenres, index) in store.arrayGenres"
-                        v-show="film.genre_ids.includes(elementGenres.id)">
+                        v-show="product.genre_ids.includes(elementGenres.id)">
                         {{ elementGenres.name }},
                     </span>
                 </li>
@@ -59,18 +60,19 @@ export default {
 
                 <!-- LINGUE -->
                 <li class="language-flag-box">
-                    <img v-if="availableFlags.includes(film.original_language)"
-                        :src="getImgUrl(film.original_language)">
-                    <span v-else>Lingua: {{ film.original_language }}</span>
+                    <img v-if="availableFlags.includes(product.original_language)"
+                        :src="getImgUrl(product.original_language)">
+                    <span v-else>Lingua: {{ product.original_language }}</span>
                 </li>
                 <!-- / LINGUE -->
 
                 <!-- STARS -->
                 <li>
-                    <span v-for="(star, index) in Math.round(film.vote_average / 2)" :key="index" class="stars">
+                    <span v-for="(star, index) in Math.round(product.vote_average / 2)" :key="index" class="stars">
                         <i class="fa-solid fa-star"></i>
                     </span>
-                    <span v-for="(star, index) in (5 - (Math.round(film.vote_average / 2)))" :key="index" class="stars">
+                    <span v-for="(star, index) in (5 - (Math.round(product.vote_average / 2)))" :key="index"
+                        class="stars">
                         <i class="fa-regular fa-star"></i>
                     </span>
                 </li>
@@ -99,7 +101,7 @@ export default {
 
     .card {
         display: none;
-        padding: 0 1rem;
+        padding: 0 .8rem;
         position: absolute;
         left: 0;
         top: 0;
@@ -115,7 +117,7 @@ export default {
         }
 
         li {
-            margin: .4rem 0;
+            margin: .5rem 0;
         }
     }
 }
