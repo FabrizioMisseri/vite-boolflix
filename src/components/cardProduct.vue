@@ -2,7 +2,7 @@
 import { store } from '../store';
 
 export default {
-    name: "card product",
+    name: "cardProduct",
 
     props: {
         product: Object,
@@ -22,7 +22,11 @@ export default {
     },
 
     computed: {
-        X() {
+        getFullStars() {
+            return (Math.round(this.product.vote_average / 2));
+        },
+
+        getEmptyStars() {
             return 5 - (Math.round(this.product.vote_average / 2));
         },
     }
@@ -77,10 +81,10 @@ export default {
 
                 <!-- STARS -->
                 <li>
-                    <span v-for="(star, index) in Math.round(product.vote_average / 2)" :key="index" class="stars">
+                    <span v-for="(star, index) in getFullStars" :key="index" class="stars">
                         <i class="fa-solid fa-star"></i>
                     </span>
-                    <span v-for="(star, index) in X()" :key="index" class="stars">
+                    <span v-for="(star, index) in getEmptyStars" :key="index" class="stars">
                         <i class="fa-regular fa-star"></i>
                     </span>
                 </li>
